@@ -4,7 +4,8 @@
 This is a simple project that will help you know when your system is currently down
 ```
 ```
-It will send an email if the website is currently down but for that to happen you need to create a route at the project root that returns 200 OK 
+It will send an email if the website is currently down but for that to happen you need to 
+create a route at the project root that returns 200 OK
 ```
 ```
 The username is email and the password is from app in gmail
@@ -15,6 +16,8 @@ it looks this way naturally
 password = hjahd hjag hags hgas
 
 this is randomly generated so make sure to get the actual thing
+
+[APP PASSWORD](https://myaccount.google.com/)
 
 ```
 
