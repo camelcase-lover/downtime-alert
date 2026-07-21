@@ -17,9 +17,9 @@ password = hjahd hjag hags hgas
 
 this is randomly generated so make sure to get the actual thing
 
-[APP PASSWORD](https://myaccount.google.com/)
-
 ```
+
+**[APP PASSWORD](https://myaccount.google.com/)**
 
 ```
 to send on multiple emails use vec![]
