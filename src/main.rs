@@ -1,15 +1,19 @@
 use mail_send::{
     Credentials, SmtpClientBuilder, mail_builder::MessageBuilder
 };
-use std::error::Error;
+use std::{
+    env,
+    error::Error};
 use reqwest::Client;
 use std::time::Duration;
 use tokio::time::sleep;
+use dotenvy::dotenv;
 #[tokio::main]
 async fn main() {
-    let username = "";
-    let password = "";
-    let url = "yoursite@domain";
+    dotenv().ok().expect(".env file not found");
+    let username = env::var("USERNAME").expect("USERNAME is not found inside .env file");
+    let password = env::var("PASSWORD").expect("PASSWORD variable is not available inside .env file");
+    let url = env::var("URL").expect("URL is not found inside .env");
 
     let interval = Duration::from_mins(5);
     
@@ -43,12 +47,15 @@ async fn smtp_client(username: &str, password: &str) -> Result<(), Box<dyn Error
     .connect()
     .await?;
 
-    let from_email_address = "fromemail@example.com";
-    let site_name = "";
-    let recipients: Vec<String> = vec![
-        "email1@example.com".to_string()
-    ];
+    let from_email = env::var("FROM").expect("FROM is not found inside .env");
+    let emails: Vec<String> = env::var("EMAILS")
+    .unwrap_or_default()
+    .split(',')
+    .map(|s| s.trim().to_string())
+    .filter(|s| !s.is_empty())
+    .collect();
 
+    let site_name = env::var("SITE_NAME").expect("SITE_NAME does not exist inside .env file");
     
     let body = format!(r#"
     <html>
@@ -65,9 +72,9 @@ async fn smtp_client(username: &str, password: &str) -> Result<(), Box<dyn Error
     "#, site_name);
 
     let message_html = MessageBuilder::new()
-    .from(("System Health checker", from_email_address))
+    .from(("System MONITOR", from_email.as_str()))
     .subject("System status alert")
-    .to(recipients)
+    .to(emails)
     .html_body(&body);
 
     client.send(message_html).await?;

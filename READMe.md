@@ -21,22 +21,28 @@ this is randomly generated so make sure to get the actual thing
 
 **[APP PASSWORD](https://myaccount.google.com/)**
 
-```
-to send on multiple emails use vec![]
 
-add email on the vec!
+HOW TO SET UP THE PROJECT
 
-let recipients: Vec<String> = vec![
-        "email1@example.com".to_string(),
-        "email2@example.com".to_string(),
-    ];
-
-Inside the array you can add as many recipients(emails) as you wish
-
+1. create a folder any name
+2. inside the folder create .env file and add this variables
 
 ```
-
+EMAILS=email@domain,email2@domain, this is for send to multiple domains, for 1 is EMAILS=email@domain
+USERNAME=email
+PASSWORD="iajs akds aijd aisa"
+URL=the link of site to monitor
+FROM=from email recommended same as username
+SITE_NAME=give your site a name, example my_app
 ```
+
+3. GET executable for any operating system or clone and compile the code
+
+**[Download](https://app.domain.name)**
+
+4. How to run the project use simple ./ linux or macos based systems or .\ windows based systems 
+
+
 How to get a free hosting guide dropping soon...
 
 Get locked in and leave a star on this helpful script as I believe
