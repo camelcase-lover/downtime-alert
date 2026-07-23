@@ -9,18 +9,18 @@ RUN rm -rf src
 
 COPY . .
 
-
 RUN cargo build --release
+
 
 FROM debian:bookworm-slim
 
-
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates && \
+    apt-get install -y --no-install-recommends \
+        ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-COPY --from=builder /app/target/release/health_status ./app
+COPY --from=builder /app/target/release/health_status .
 
-CMD ["./app"]
+CMD ["./health_status"]
