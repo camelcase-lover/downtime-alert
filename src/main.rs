@@ -55,7 +55,7 @@ async fn smtp_client(username: &str, password: &str) -> Result<(), Box<dyn Error
     .filter(|s| !s.is_empty())
     .collect();
 
-    let site_name = env::var("SITE_NAME").expect("SITE_NAME does not exist inside .env file");
+    let site_name = env::var("APP_N").expect("SITE_NAME does not exist inside .env file");
     
     let body = format!(r#"
     <html>
