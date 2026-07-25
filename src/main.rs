@@ -13,7 +13,7 @@ async fn main() {
     dotenv().ok().expect(".env file not found");
     let username = env::var("USERNAME").expect("USERNAME is not found inside .env file");
     let password = env::var("PASSWORD").expect("PASSWORD variable is not available inside .env file");
-    let url = env::var("URL").expect("URL is not found inside .env");
+    let url = env::var("URL_HOST").expect("URL is not found inside .env");
 
     let interval = Duration::from_mins(5);
     
